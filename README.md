@@ -1,4 +1,5 @@
 📚 BookBuzz
+
 BookBuzz es una pequeña aplicación fullstack construida con Laravel 12, React, Vite y Bootstrap. Permite buscar libros usando la API pública de Google Books, guardar los términos buscados en una base de datos, y mostrar los resultados de forma visual con componentes React.
 
 Tecnologías usadas:
