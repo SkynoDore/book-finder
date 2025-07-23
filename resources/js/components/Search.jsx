@@ -10,7 +10,6 @@ export default function Search() {
         const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
         const data = await res.json();
         setBooks(data.items || []);
-           // guardar término en Laravel
     await fetch('/api/searches', {
         method: 'POST',
         headers: {
@@ -22,8 +21,10 @@ export default function Search() {
     };
 
     return (
-        <div>
-            <form className="flex items-center space-x-4" onSubmit={handleSearch}>
+        <>
+        <h1 className='text-primary'>Bookbuzz</h1>
+        <div className="d-flex p-4 rounded shadow-lg flex-column align-items-center justify-content-center">
+            <form className="flex items-center" onSubmit={handleSearch}>
                 <input
                     type="text"
                     value={query}
@@ -33,13 +34,13 @@ export default function Search() {
                 />
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white rounded-lg p-2"
+                    className="bg-primary text-white rounded-lg p-2"
                 >
                     Search
                 </button>
             </form>
 
-            <div className="d-flex flex-wrap mt-4">
+            <div className="d-flex flex-wrap">
                 {books.map(item => (
                     <BookCard
                         key={item.id}
@@ -48,5 +49,6 @@ export default function Search() {
                 ))}
             </div>
         </div>
+        </>
     );
 }
