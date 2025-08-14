@@ -22,8 +22,8 @@ export default function Search() {
 
     return (
         <>
-        <h1 className='text-primary'>Bookbuzz</h1>
-        <div className="d-flex p-4 rounded shadow-lg flex-column align-items-center justify-content-center">
+        <h1 className='mt-4'>Bookbuzz</h1>
+        <div className="d-flex flex-column align-items-center justify-content-center">
             <form className="flex items-center" onSubmit={handleSearch}>
                 <input
                     type="text"
@@ -34,19 +34,19 @@ export default function Search() {
                 />
                 <button
                     type="submit"
-                    className="bg-primary text-white rounded-lg p-2"
+                    className="bg-primary rounded-lg p-2"
                 >
                     Search
                 </button>
             </form>
-
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-row flex-wrap mt-4 gap-3">
                 {books.map(item => (
                     <BookCard
                         key={item.id}
                         book={item.volumeInfo}
                     />
                 ))}
+
             </div>
         </div>
         </>

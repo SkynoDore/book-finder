@@ -9,5 +9,18 @@ export default defineConfig({
             refresh: true,
         }),
         react(),
+
     ],
+    css: {
+     preprocessorOptions: {
+        scss: {
+          silenceDeprecations: [
+            'import',
+            'mixed-decls',
+            'color-functions',
+            'global-builtin',
+          ],
+        },
+     },
+    },
 });
