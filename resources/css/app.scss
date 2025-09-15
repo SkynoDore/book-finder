@@ -1,29 +1,39 @@
-// Custom.scss
-
-
 // Include any default variable overrides here (though functions won’t be available)
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 
 // 2. Sobrescribe las variables ANTES de cargar bootstrap
 $theme-colors: (
-  "light": 	#fff0db
-
+    "light": 	#fff0db
+    ,"dark": rgb(99, 99, 99)
 );
 
 $light: #fff0db;
+$dark: rgb(99, 99, 99);
+
 // 3. Carga Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
 // Then add additional custom code here
 
 h1 {
     font-family: "Merriweather", serif;
-    color: rgb(99, 99, 99);
+    color: $dark;
 }
-p{
-    font-family: "Roboto", sans-serif;
+
+p, input {
+    font-family: "Tinos", serif;
     color: rgb(90, 90, 90);
 }
+
 body{
     background-color: $light;
+}
+
+.book-thumbnail{
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
 }

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import BookCard from "./BookCard";
+import { useDebounce } from './hooks/useDebounce';
 
 export default function Search() {
     const [query, setQuery] = useState("");
     const [books, setBooks] = useState([]);
+    const debouncedQuery = useDebounce(query, 500);
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${debouncedQuery}`);
         const data = await res.json();
         setBooks(data.items || []);
     await fetch('/api/searches', {
@@ -34,12 +36,12 @@ export default function Search() {
                 />
                 <button
                     type="submit"
-                    className="bg-primary rounded-lg p-2"
+                    className="btn btn-dark rounded-lg p-2"
                 >
                     Search
                 </button>
             </form>
-            <div className="d-flex flex-row flex-wrap mt-4 gap-3">
+            <div className="d-flex flex-row flex-wrap justify-content-center my-4 gap-3">
                 {books.map(item => (
                     <BookCard
                         key={item.id}
