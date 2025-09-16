@@ -8,12 +8,17 @@ export default function Search() {
   const debouncedQuery = useDebounce(query, 500);
 
   const handleSearch = async (e) => {
+    try{
     e.preventDefault();
     const res = await fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${debouncedQuery}`
     );
     const data = await res.json();
     setBooks(data.items || []);
+    }
+    catch (error){
+      console.error(error)
+    }
     /*await fetch('/api/searches', {
         method: 'POST',
         headers: {
@@ -27,26 +32,34 @@ export default function Search() {
   return (
     <>
       <h1 className="mt-4">Bookbuzz</h1>
-      <div className="d-flex flex-column align-items-center justify-content-center">
-        <form className="flex items-center" onSubmit={handleSearch}>
+      <div className="d-flex flex-column align-items-center justify-content-center col-12 col-md-6 p-2">
+        <form className="d-flex items-center w-100 gap-3" onSubmit={handleSearch}>
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar libros..."
-            className="border border-gray-300 rounded-lg p-2"
+            className="border border-gray-300 rounded-lg p-2 flex-fill"
           />
           <button type="submit" className="btn btn-dark rounded-lg p-2">
-            Search
+            Buscar
+          </button>
+          <button onClick={() => {
+            setQuery('');
+            setBooks([]);
+
+          }}>
+            Reiniciar
           </button>
         </form>
+        </div>
         <div className="d-flex flex-row flex-wrap justify-content-center my-4 gap-3">
           {books.length > 0 ? (
             books.map((item) => (
               <BookCard key={item.id} book={item.volumeInfo} />
             ))
           ) : (
-            <main className="col-12 col-md-6 p-2">
+            <main className="p-2 col-12 col-md-6">
             <p>
               BookBuzz es un frontend ligero desarrollado con React, Vite y
               Bootstrap que permite a los usuarios buscar libros de manera
@@ -71,7 +84,7 @@ export default function Search() {
             </main>
           )}
         </div>
-      </div>
+      
     </>
   );
 }
