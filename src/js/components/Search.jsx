@@ -34,7 +34,7 @@ export default function Search() {
       <h1 className="mt-4">Bookbuzz</h1>
       <div className="d-flex flex-column align-items-center justify-content-center col-12 col-md-6 p-2">
         <form
-          className="d-flex items-center w-100 gap-3"
+          className="d-flex items-center flex-wrap w-100 gap-3"
           onSubmit={handleSearch}
         >
           <input
@@ -46,19 +46,21 @@ export default function Search() {
             placeholder="Buscar libros..."
             className="border border-gray-300 rounded-lg p-2 flex-fill"
           />
-          <button type="submit" className="btn btn-dark rounded-lg p-2">
-            Buscar
-          </button>
-          <button
-          className="btn btn-dark rounded-lg p-2"
-            type="button"
-            onClick={() => {
-              setQuery("");
-              setBooks([]);
-            }}
-          >
-            Reiniciar
-          </button>
+          <div className="d-flex gap-3">
+            <button type="submit" className="btn btn-dark rounded-lg p-2">
+              Buscar
+            </button>
+            <button
+              className="btn btn-dark rounded-lg p-2"
+              type="button"
+              onClick={() => {
+                setQuery("");
+                setBooks([]);
+              }}
+            >
+              Reiniciar
+            </button>
+          </div>
         </form>
       </div>
       <div className="d-flex flex-row flex-wrap justify-content-center my-4 gap-3">
@@ -67,7 +69,7 @@ export default function Search() {
         ) : (
           <main className="p-2 col-12 col-md-6">
             {errorMsg && <p className="text-danger">{errorMsg}</p>}
-            <p >
+            <p>
               BookBuzz es un frontend ligero desarrollado con React, Vite y
               Bootstrap que permite a los usuarios buscar libros de manera
               rápida y visual. La aplicación se conecta a la API pública de

@@ -6,7 +6,7 @@
 $theme-colors: (
     "light": #fff0db,
     "dark": rgb(99, 99, 99),
-    "primary": #0d6efd,
+    "primary": #ffe7dc,
     "secondary": #6c757d,
     "success": #198754,
     "info": #0dcaf0,
@@ -30,11 +30,9 @@ h1 {
     color: $dark;
 }
 
-p,
-input {
+p, input {
     font-family: "Tinos", serif;
     color: rgb(90, 90, 90);
-
 }
 
 input {
@@ -61,7 +59,6 @@ button:hover {
 
 a:hover {
     color: white;
-
 }
 
 .book-thumbnail {
@@ -70,4 +67,8 @@ a:hover {
     height: auto;
     object-fit: cover;
     margin: 0 auto;
+}
+
+.min-vh-90 {
+  min-height: 90vh;
 }

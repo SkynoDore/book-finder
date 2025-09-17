@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import Search from './js/components/Search';
 import MainLayout from './js/layouts/main';
 import '/src/css/app.css';
+import Footer from './js/layouts/footer';
 import gsap from 'gsap';
 
 export default function App(){
@@ -11,7 +11,11 @@ export default function App(){
         <React.StrictMode>
         <MainLayout>
             <Search />
+            
         </MainLayout>
+        <Footer/>
+        
+        
     </React.StrictMode>
     )
 }
